@@ -1,0 +1,248 @@
+/* GLOBAL RESET */
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Root footer height variable — adjust to match your footer */
+:root {
+    --footer-height: 220px; /* tweak this after checking your actual footer height */
+}
+
+/* ====================================================================== */
+/* PAGE LAYOUT (with pinned footer spacing) */
+/* ====================================================================== */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    /* The magic: this padding ensures content scrolls fully above footer */
+    padding-bottom: var(--footer-height);
+}
+
+/* Main content grows and scrolls normally */
+main, #app {
+    flex: 1 0 auto;
+}
+
+/* ====================================================================== */
+/* HEADER */
+/* ====================================================================== */
+
+header {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+.head-signature {
+    height: 50px;
+    width: auto;
+    margin: 0 10px;
+}
+
+/* ====================================================================== */
+/* HERO SECTION */
+/* ====================================================================== */
+
+.hero-center {
+    min-height: 60vh;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+}
+
+.hero-img {
+    width: 100%;
+    max-width: 720px;
+    height: auto;
+    display: block;
+}
+
+/* ====================================================================== */
+/* TYPOGRAPHY */
+/* ====================================================================== */
+
+p {
+    font-family: "Work Sans", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000;
+}
+
+h1 {
+    font-family: "VT323", monospace;
+    font-size: 48px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 1.1;
+    color: #000;
+}
+
+/* ====================================================================== */
+/* MAIN CONTENT */
+/* ====================================================================== */
+
+.main-content {
+    flex: 1;
+    margin: 20px;
+    /* IMPORTANT: no max-height, no fixed height */
+}
+
+/* ====================================================================== */
+/* PAGE HEADERS */
+/* ====================================================================== */
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+}
+
+.page-header-icon {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* ====================================================================== */
+/* COLLECTIONS */
+/* ====================================================================== */
+
+.collections-grid {
+    align-items: left;
+    gap: 2rem;
+}
+
+/* ====================================================================== */
+/* WERK ITEM BOXES */
+/* ====================================================================== */
+
+.werk-item-box {
+    display: block;
+    width: auto;
+    margin: 40px 0;
+}
+
+.werk-item-title {
+    font-family: "VT323", monospace;
+    text-transform: uppercase;
+    text-align: left;
+    font-size: clamp(21px, 4vw, 28px);
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    color: #000;
+
+    text-shadow: -3px 3px 0 #fff;
+}
+
+/* ====================================================================== */
+/* FOOTER — PINNED (FIXED) */
+/* ====================================================================== */
+
+.site-footer {
+    background: #fff;
+    padding: 2rem 1rem 1rem;
+    border-top: 1px solid #eee;
+    font-family: sans-serif;
+}
+
+/* === PINNED FOOTER SETUP === */
+.site-footer.glass {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    height: var(--footer-height);
+    z-index: 999;
+
+    background: rgba(255, 255, 255, 0.7);
+    border-top: 1px solid rgba(255, 255, 255, 0.6);
+
+    box-shadow:
+        0 -8px 24px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+    overflow: clip;
+}
+
+/* Frosted Blur (Safari + modern browsers) */
+@supports ((-webkit-backdrop-filter: blur(12px)) or (backdrop-filter: blur(12px))) {
+    .site-footer.glass {
+        background: rgba(255, 255, 255, 0.35);
+        -webkit-backdrop-filter: blur(12px) saturate(140%);
+        backdrop-filter: blur(12px) saturate(140%);
+        border-top: 1px solid rgba(255, 255, 255, 0.55);
+    }
+}
+
+/* ====================================================================== */
+/* FOOTER CONTENT */
+/* ====================================================================== */
+
+.footer-links {
+    display: flex;
+    justify-content: flex-start;
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.footer-column {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-link {
+    color: #000;
+    text-decoration: underline;
+    font-size: 0.95rem;
+    transition: opacity 0.2s;
+}
+
+.footer-link:hover {
+    opacity: 0.6;
+}
+
+.footer-bottom {
+    text-align: left;
+    font-size: 0.85rem;
+    color: #333;
+}
+
+.footer-bottom a {
+    color: #000;
+    margin-left: 0.5rem;
+    text-decoration: underline;
+}
+
+.footer-bottom a:hover {
+    opacity: 0.6;
+}
+
+/* ====================================================================== */
+/* MOBILE */
+/* ====================================================================== */
+
+@media (max-width: 600px) {
+    .footer-links {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

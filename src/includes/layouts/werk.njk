@@ -1,0 +1,17 @@
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="page-header">
+<img class="page-header-icon" src="https://res.cloudinary.com/dtkhwq0je/image/upload/v1764109364/werk-icon-keyboard_yfsuic.png"></img>
+<h1>{{ title }}</h1>
+</div>
+<div> {{ content | safe }} </div>
+<div class="collections-grid"> {% for werk in collections.werk %}
+<a href="{{ werk.url }}"><div class="werk-item-box">
+<h2 class="werk-item-title">{{ werk.data.title | safe }}</h2> 
+<p>{{ werk.data.description | safe }}</p>
+</div>
+</a>
+{% endfor %} </div>
+{% endblock content %}
+
