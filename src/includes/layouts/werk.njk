@@ -7,8 +7,8 @@
 </div>
 <div> {{ content | safe }} </div>
 <div class="collections-grid"> {% for werk in collections.werk %}
-<a href="{{ werk.url }}"><div class="werk-item-box">
-<h2 class="werk-item-title">{{ werk.data.title | safe }}</h2> 
+<a href="{{ werk.url }}"><div class="blog-item-box">
+<h2 class="blog-item-title">{{ werk.data.title | safe }}</h2> 
 <p>{{ werk.data.description | safe }}</p>
 </div>
 </a>

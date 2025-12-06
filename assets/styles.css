@@ -132,13 +132,13 @@ h1 {
 /* WERK ITEM BOXES */
 /* ====================================================================== */
 
-.werk-item-box {
+.blog-item-box {
     display: block;
     width: auto;
     margin: 40px 0;
 }
 
-.werk-item-title {
+.blog-item-title {
     font-family: "VT323", monospace;
     text-transform: uppercase;
     text-align: left;

@@ -1,0 +1,4 @@
+{
+  "layout": "layouts/pythonBucket.njk",
+  "tags": "pybucket"
+}
