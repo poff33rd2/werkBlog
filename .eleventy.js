@@ -1,6 +1,8 @@
 module.exports = function(eleventyConfig) {
   // Copy assets folder
   eleventyConfig.addPassthroughCopy("assets");
+  // Copy images folder
+  eleventyConfig.addPassthroughCopy("src/werk/images");
     eleventyConfig.addPassthroughCopy({
     "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js": "js/bootstrap.js",
     "node_modules/bootstrap/dist/css/bootstrap.min.css": "assets/bootstrap.css"

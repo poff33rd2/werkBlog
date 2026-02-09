@@ -4,11 +4,6 @@
     box-sizing: border-box;
 }
 
-/* Root footer height variable — adjust to match your footer */
-:root {
-    --footer-height: 220px; /* tweak this after checking your actual footer height */
-}
-
 /* ====================================================================== */
 /* PAGE LAYOUT (with pinned footer spacing) */
 /* ====================================================================== */
@@ -17,13 +12,14 @@ html, body {
     height: 100%;
 }
 
+:root {
+    --footer-height: 220px;
+}
+
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-
-    /* The magic: this padding ensures content scrolls fully above footer */
-    padding-bottom: var(--footer-height);
 }
 
 /* Main content grows and scrolls normally */
@@ -65,6 +61,15 @@ header {
     display: block;
 }
 
+/* Markdown images */
+.main-content img {
+    max-width: 100%;
+    height: auto;
+    max-height: 520px;
+    object-fit: contain;
+    display: block;
+}
+
 /* ====================================================================== */
 /* TYPOGRAPHY */
 /* ====================================================================== */
@@ -92,6 +97,7 @@ h1 {
 .main-content {
     flex: 1;
     margin: 20px;
+    padding-bottom: var(--footer-height);
     /* IMPORTANT: no max-height, no fixed height */
 }
 
@@ -167,18 +173,13 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-
-    height: var(--footer-height);
     z-index: 999;
-
     background: rgba(255, 255, 255, 0.7);
     border-top: 1px solid rgba(255, 255, 255, 0.6);
 
     box-shadow:
         0 -8px 24px rgba(0, 0, 0, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.6);
-
-    overflow: clip;
 }
 
 /* Frosted Blur (Safari + modern browsers) */
