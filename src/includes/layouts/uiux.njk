@@ -6,10 +6,10 @@
 <h1>{{ title }}</h1>
 </div>
 <div> {{ content | safe }} </div>
-<div class="collections-grid"> {% for search in collections.research %}
-<a href="{{ search.url }}"><div class="blog-item-box">
-<h2 class="blog-item-title">{{ search.data.title | safe }}</h2> 
-<p>{{ search.data.description | safe }}</p>
+<div class="collections-grid"> {% for uiux in collections.uiux %}
+<a href="{{ uiux.url }}"><div class="blog-item-box">
+<h2 class="blog-item-title">{{ uiux.data.title | safe }}</h2> 
+<p>{{ uiux.data.description | safe }}</p>
 </div>
 </a>
 {% endfor %} </div>

@@ -8,7 +8,8 @@
 
   </head>
   <body>
- 
+    
+    
     <header>
       <img
         class="head-signature"
@@ -19,6 +20,7 @@
       Integration & Automation (REST, GraphQL, Webhooks) | CRM, CMS Systems
       Specialist | Shopify Store Developer
     </header>
+    
 
     <main class="main-content">
     
@@ -27,15 +29,18 @@
       </nav>
     
     
-        <section id="Tutorials" class="panel" hidden>Tutorials content…</section>
+        <section id="Tutorials" class="panel" hidden>Let's Build</section>
 
     
     </main>
+    
     
     <footer class="site-footer glass">
       <nav class="footer-links" aria-label="Footer">
         <div class="footer-column">
           <a class="footer-link" href="/werk">Werk</a>
+          <a class="footer-link" href="/uiux/">UI/UX</a>
+          <a class="footer-link" href="/links/">Links</a>
         </div>
       </nav>
       <div class="footer-bottom">
@@ -44,6 +49,7 @@
         <a href="/terms">Terms of Use</a>
       </div>
     </footer>
+    
     <script>
       (function () {
         var footer = document.querySelector(".site-footer");
@@ -56,6 +62,106 @@
         };
         setFooterHeight();
         window.addEventListener("resize", setFooterHeight);
+      })();
+
+      (function () {
+        var buttons = document.querySelectorAll(".code-card__copy");
+        if (!buttons.length) return;
+
+        var fallbackCopy = function (text) {
+          var textarea = document.createElement("textarea");
+          textarea.value = text;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "absolute";
+          textarea.style.left = "-9999px";
+          document.body.appendChild(textarea);
+          textarea.select();
+          document.execCommand("copy");
+          document.body.removeChild(textarea);
+        };
+
+        buttons.forEach(function (button) {
+          button.addEventListener("click", async function () {
+            var card = button.closest(".code-card");
+            if (!card) return;
+            var codeEl = card.querySelector("code");
+            if (!codeEl) return;
+
+            var text = codeEl.textContent || "";
+
+            try {
+              if (navigator.clipboard && window.isSecureContext) {
+                await navigator.clipboard.writeText(text);
+              } else {
+                fallbackCopy(text);
+              }
+              var original = button.textContent;
+              button.textContent = "Copied";
+              setTimeout(function () {
+                button.textContent = original;
+              }, 1200);
+            } catch (e) {
+              button.textContent = "Failed";
+              setTimeout(function () {
+                button.textContent = "Copy";
+              }, 1200);
+            }
+          });
+        });
+      })();
+
+      (function () {
+        var cards = document.querySelectorAll(".code-card");
+        if (!cards.length) return;
+
+        cards.forEach(function (card) {
+          var codeWrap = card.querySelector(".code-card__code");
+          var codeEl = card.querySelector(".code-card__pre code");
+          var expandButton = card.querySelector(".code-card__expand");
+          var collapseButton = card.querySelector(".code-card__collapse");
+          var moreHint = card.querySelector(".code-card__more");
+          if (!codeWrap || !codeEl || !expandButton || !collapseButton || !moreHint) return;
+
+          var setExpanded = function (expanded) {
+            card.classList.toggle("code-card--expanded", expanded);
+            expandButton.setAttribute("aria-expanded", expanded ? "true" : "false");
+            collapseButton.hidden = !expanded;
+            if (!expanded) {
+              codeWrap.scrollTop = 0;
+            }
+          };
+
+          var updateCardState = function () {
+            var canExpand = codeEl.scrollHeight > 258;
+            var isExpanded = card.classList.contains("code-card--expanded");
+            if (isExpanded) {
+              moreHint.style.display = "none";
+              collapseButton.hidden = false;
+              return;
+            }
+            if (!canExpand) {
+              moreHint.style.display = "none";
+              collapseButton.hidden = true;
+              return;
+            }
+            moreHint.style.display = "";
+            collapseButton.hidden = true;
+          };
+
+          expandButton.addEventListener("click", function () {
+            setExpanded(true);
+            updateCardState();
+          });
+
+          collapseButton.addEventListener("click", function () {
+            setExpanded(false);
+            updateCardState();
+          });
+
+          setExpanded(false);
+          updateCardState();
+          window.addEventListener("resize", updateCardState);
+        });
       })();
     </script>
   </body>

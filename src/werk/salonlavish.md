@@ -2,7 +2,7 @@
 title: "Salon Lavish"
 description: "Wix Studio Developer | Salon Lavish – Milwaukee, WI | 2022–Present | I migrated and rebuilt the site on Wix with WCAG-compliant UX, SEO optimization, conversion-focused landing pages, automated booking workflows, and integrated social scheduling—driving higher rankings, increased bookings, and consistent lead generation."
 ---
-![Hero image](../images/sl-poty.png)
+![Hero image](./images/sl-poty.png)
 Problem: Desired a website that acted as an express beauty Booking and content hub that advertise and share the expertise and know-how to improve the health of patrons hair.
 
 • Migrated a 10-page site from Squarespace to Wix, improving responsiveness and

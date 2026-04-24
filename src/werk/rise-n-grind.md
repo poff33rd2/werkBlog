@@ -2,7 +2,7 @@
 title: "Rise N' Grind"
 description: "Wix Studio developer | Rise N’ Grind – Milwaukee, WI | 2019–2023 I rebuilt Rise N' Grind site with a streamlined UX, dynamic database-driven menus, one-tap ordering flows, performance optimization, targeted email campaigns, and user-tested improvements—resulting in higher engagement, stronger retention, and increased online orders."
 ---
-![Hero image](../images/risengrind-hero.png)
+![Hero image](./images/risengrind-hero.png)
 Problem: Low website reach, engagement, and customer retainment.
 
 • Wrote SEO based page content, menu item names, and blog posts to increase search results opportunities.
