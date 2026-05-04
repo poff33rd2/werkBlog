@@ -563,10 +563,10 @@ h1 {
     align-items: center;
     justify-content: space-between;
     gap: 0.65rem;
-    min-height: 56px;
-    padding: 0.7rem 0.8rem;
+    min-height: 44px;
+    padding: 0.45rem 0.8rem;
     border-bottom: 1px solid #e4e4e7;
-    background: #fafafa;
+    background: #fff;
 }
 
 .flight-preview__left,
@@ -619,21 +619,27 @@ h1 {
 
 .flight-preview__body {
     position: relative;
-    min-height: 170px;
-    background: #fff;
+    min-height: 160px;
+    background: #e5e7eb;
+    overflow: hidden;
 }
 
 .flight-preview__drawer {
     position: absolute;
     inset: 0;
-    display: none;
+    z-index: 2;
     background: #fff;
     color: #18181b;
     padding: 1rem;
+    pointer-events: none;
+    transform: translateY(-100%);
+    transition: transform 320ms ease-in-out;
 }
 
 .flight-preview__drawer.is-open {
-    display: block;
+    pointer-events: auto;
+    border-bottom: 1px solid #e4e4e7;
+    transform: translateY(0);
 }
 
 .flight-preview__drawer a {
@@ -645,6 +651,10 @@ h1 {
     letter-spacing: 0;
     margin-bottom: 0.35rem;
     font-weight: 400;
+}
+
+.flight-preview__content-emphasis {
+    display: none;
 }
 
 .flight-preview__status {
@@ -715,16 +725,19 @@ h1 {
 }
 
 .split-preview__panel {
-    display: none;
-    padding: 0.55rem 0;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
     color: #52525b;
     font-size: 0.78rem;
     line-height: 1.45;
     border-bottom: 1px solid #e4e4e7;
+    transition: max-height 320ms ease-in-out, padding 320ms ease-in-out;
 }
 
 .split-preview__panel.is-open {
-    display: block;
+    max-height: 220px;
+    padding: 0.55rem 0;
 }
 
 .split-preview__right img {

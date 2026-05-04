@@ -19,6 +19,7 @@ description: "A sleek and compact navigation component"
       <a href="#">Archive</a>
     </div>
   </div>
+  <div class="flight-preview__content-emphasis" aria-hidden="true"></div>
   <p class="flight-preview__status">Demo preview: use Menu to test interaction.</p>
 </div>
 <script src="/assets/flight-preview.js"></script>
@@ -85,12 +86,6 @@ description: "A sleek and compact navigation component"
           <td>All <code>false</code></td>
           <td>Controls hide/show, nav height shrink, and transparent/solid surface behavior on scroll</td>
         </tr>
-        <tr>
-          <td><code>menuAppear</code></td>
-          <td><code>{ mode, direction }</code></td>
-          <td><code>{ mode: "none", direction: "down" }</code></td>
-          <td>Controls drawer entrance style: no effect, fade from top, or directional slide</td>
-        </tr>
       </tbody>
     </table>
   </div>
@@ -119,7 +114,6 @@ export function Flight({
   logoSrc = 'https://res.cloudinary.com/dtkhwq0je/image/upload/v1769378182/Asset_1_dhwm3l.png',
   logoAlt = 'Flight',
   scrollBehavior = {},
-  menuAppear = {},
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
@@ -131,7 +125,6 @@ export function Flight({
     cruiseMode = false,
     solidAfterScroll = false,
   } = scrollBehavior;
-  const { mode = 'none', direction = 'down' } = menuAppear;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -171,32 +164,11 @@ export function Flight({
   }, [hideOnScrollDown, cruiseMode, solidAfterScroll]);
 
   const navVisibilityClass = hideOnScrollDown && isHidden ? '-translate-y-full' : 'translate-y-0';
-  const navHeightClass = cruiseMode && isCruise ? 'h-12' : 'h-16';
-  const navSurfaceClass = solidAfterScroll
-    ? isScrolled
-      ? 'bg-black/90'
-      : 'bg-transparent'
-    : 'bg-black/35 backdrop-blur-2xl backdrop-brightness-65';
-  const directionMap = {
-    up: '-translate-y-8',
-    down: 'translate-y-8',
-    left: '-translate-x-8',
-    right: 'translate-x-8',
-  };
-  const slideHiddenClass = directionMap[direction] || directionMap.down;
-  const drawerOpenClass = isOpen ? 'opacity-100 pointer-events-auto translate-x-0 translate-y-0' : '';
-  const drawerClosedClass =
-    mode === 'fadeTop'
-      ? 'opacity-0 pointer-events-none -translate-y-6'
-      : mode === 'slide'
-        ? `opacity-0 pointer-events-none ${slideHiddenClass}`
-        : 'opacity-0 pointer-events-none';
-  const drawerMotionClass =
-    mode === 'none'
-      ? ''
-      : mode === 'fadeTop'
-        ? 'transition-all duration-300 ease-out'
-        : 'transition-all duration-300 ease-in-out';
+  const navHeightClass = cruiseMode && isCruise ? 'h-10' : 'h-12';
+  const navSurfaceClass = 'bg-white';
+  const drawerStateClass = isOpen
+    ? 'translate-y-0 pointer-events-auto'
+    : '-translate-y-[calc(100%+4rem)] pointer-events-none';
 
   return (
     <>
@@ -245,9 +217,7 @@ export function Flight({
       {/* Full-Screen Drawer Menu */}
       <div
         id="drawer"
-        className={`fixed top-16 left-0 right-0 bottom-0 z-30 bg-[#FAF9F5] ${drawerMotionClass} ${
-          isOpen ? drawerOpenClass : drawerClosedClass
-        }`}
+        className={`fixed top-16 left-0 right-0 bottom-0 z-30 bg-[#FAF9F5] transition-transform duration-300 ease ${drawerStateClass}`}
       >
         <div id="drawer-content" className="flex flex-col items-center justify-center h-full space-y-8 px-6">
           {navItems.map((item) => (
@@ -282,11 +252,6 @@ const scrollBehavior = {
   solidAfterScroll: true,
 };
 
-const menuAppear = {
-  mode: "slide",
-  direction: "down",
-};
-
 export default function HomePage() {
   return (
     <>
@@ -297,7 +262,6 @@ export default function HomePage() {
         logoSrc="https://res.cloudinary.com/dtkhwq0je/image/upload/v1769378182/Asset_1_dhwm3l.png"
         logoAlt="Webstaurants logo"
         scrollBehavior={scrollBehavior}
-        menuAppear={menuAppear}
       />
       <main className="pt-16">{/* page content */}</main>
     </>
@@ -322,7 +286,6 @@ export function Flight({
   logoSrc = 'https://res.cloudinary.com/dtkhwq0je/image/upload/v1769378182/Asset_1_dhwm3l.png',
   logoAlt = 'Flight',
   scrollBehavior = {},
-  menuAppear = {},
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
@@ -334,7 +297,6 @@ export function Flight({
     cruiseMode = false,
     solidAfterScroll = false,
   } = scrollBehavior;
-  const { mode = 'none', direction = 'down' } = menuAppear;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -374,32 +336,11 @@ export function Flight({
   }, [hideOnScrollDown, cruiseMode, solidAfterScroll]);
 
   const navVisibilityClass = hideOnScrollDown && isHidden ? '-translate-y-full' : 'translate-y-0';
-  const navHeightClass = cruiseMode && isCruise ? 'h-12' : 'h-16';
-  const navSurfaceClass = solidAfterScroll
-    ? isScrolled
-      ? 'bg-black/90'
-      : 'bg-transparent'
-    : 'bg-black/35 backdrop-blur-2xl backdrop-brightness-65';
-  const directionMap = {
-    up: '-translate-y-8',
-    down: 'translate-y-8',
-    left: '-translate-x-8',
-    right: 'translate-x-8',
-  };
-  const slideHiddenClass = directionMap[direction] || directionMap.down;
-  const drawerOpenClass = isOpen ? 'opacity-100 pointer-events-auto translate-x-0 translate-y-0' : '';
-  const drawerClosedClass =
-    mode === 'fadeTop'
-      ? 'opacity-0 pointer-events-none -translate-y-6'
-      : mode === 'slide'
-        ? `opacity-0 pointer-events-none ${slideHiddenClass}`
-        : 'opacity-0 pointer-events-none';
-  const drawerMotionClass =
-    mode === 'none'
-      ? ''
-      : mode === 'fadeTop'
-        ? 'transition-all duration-300 ease-out'
-        : 'transition-all duration-300 ease-in-out';
+  const navHeightClass = cruiseMode && isCruise ? 'h-10' : 'h-12';
+  const navSurfaceClass = 'bg-white';
+  const drawerStateClass = isOpen
+    ? 'translate-y-0 pointer-events-auto'
+    : '-translate-y-[calc(100%+4rem)] pointer-events-none';
 
   return (
     <>
@@ -444,9 +385,7 @@ export function Flight({
 
       <div
         id="drawer"
-        className={`fixed top-16 left-0 right-0 bottom-0 z-30 bg-[#FAF9F5] ${drawerMotionClass} ${
-          isOpen ? drawerOpenClass : drawerClosedClass
-        }`}
+        className={`fixed top-16 left-0 right-0 bottom-0 z-30 bg-[#FAF9F5] transition-transform duration-300 ease ${drawerStateClass}`}
       >
         <div id="drawer-content" className="flex flex-col items-center justify-center h-full space-y-8 px-6">
           {navItems.map((item) => (
@@ -498,7 +437,8 @@ export function Flight({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4rem;
+  height: 3rem;
+  border-bottom: 1px solid #d6d3cd;
 }
 
 #nav-left,
@@ -533,16 +473,15 @@ export function Flight({
   bottom: 0;
   left: 0;
   z-index: 30;
-  transform: translateY(-100%);
-  opacity: 0;
+  transform: translateY(calc(-100% - 4rem));
   pointer-events: none;
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 #drawer.is-open {
   background-color: #faf9f5;
+  border-bottom: 1px solid #d6d3cd;
   transform: translateY(0);
-  opacity: 1;
   pointer-events: auto;
 }
 
