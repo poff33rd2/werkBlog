@@ -34,6 +34,9 @@ description: "A sleek and compact navigation component"
   <li>Your own logo image URL (replace the current Cloudinary <code>src</code>).</li>
   <li>Pick the Next.js or Vite code version below, then customize links/components as needed.</li>
 </ul>
+<p>
+  <a href="/uiux/how-to-add-project/">How to add to my project</a>
+</p>
 {% endgetstarted %}
 
 <section class="props-card" aria-labelledby="flight-props-title">

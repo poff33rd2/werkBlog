@@ -31,6 +31,9 @@ description: "A accordion and image section"
   <li>Make sure your page allows custom CSS injection or include equivalent styles in your app stylesheet.</li>
   <li>Use your own link destinations and body copy for each accordion item.</li>
 </ul>
+<p>
+  <a href="/uiux/how-to-add-project/">How to add to my project</a>
+</p>
 {% endgetstarted %}
 
 <section class="props-card" aria-labelledby="split-props-title">
