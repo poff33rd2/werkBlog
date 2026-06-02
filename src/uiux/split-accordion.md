@@ -32,7 +32,7 @@ description: "A accordion and image section"
   <li>Use your own link destinations and body copy for each accordion item.</li>
 </ul>
 <p>
-  <a href="/uiux/how-to-add-project/">How to add to my project</a>
+  <a href="/prettyui/how-to-add-project/">How to add to my project</a>
 </p>
 {% endgetstarted %}
 

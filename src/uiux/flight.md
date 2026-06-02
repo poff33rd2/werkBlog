@@ -35,7 +35,7 @@ description: "A sleek and compact navigation component"
   <li>Pick the Next.js or Vite code version below, then customize links/components as needed.</li>
 </ul>
 <p>
-  <a href="/uiux/how-to-add-project/">How to add to my project</a>
+  <a href="/prettyui/how-to-add-project/">How to add to my project</a>
 </p>
 {% endgetstarted %}
 

@@ -1,4 +1,5 @@
 {
   "layout": "layouts/uiux.njk",
-  "tags": "uiux"
+  "tags": "uiux",
+  "permalink": "/prettyui/{{ page.fileSlug }}/"
 }
